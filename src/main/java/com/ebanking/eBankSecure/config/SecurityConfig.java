@@ -24,8 +24,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         // Public endpoints
                         .requestMatchers("/api/notices", "/api/contact", "/api/users/register").permitAll()
+
+                        // Change password endpoint
+                        .requestMatchers("/api/users/*/password").authenticated()
+
                         // Admin-only endpoints
                         .requestMatchers("/api/users/**").hasRole("ADMIN")
+
                         // Authenticated user endpoints
                         .requestMatchers("/api/myLoans", "/api/myCards", "/api/myAccount", "/api/myBalance")
                         .authenticated()

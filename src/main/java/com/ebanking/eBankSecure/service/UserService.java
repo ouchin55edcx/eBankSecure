@@ -83,13 +83,4 @@ public class UserService {
         userRepository.save(user);
     }
 
-    @Transactional
-    @Profile("test")
-    public void changePasswordTest(String username, String newPassword) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException("User not found with username: " + username));
-
-        user.setPassword(passwordEncoder.encode(newPassword));
-        userRepository.save(user);
-    }
 }

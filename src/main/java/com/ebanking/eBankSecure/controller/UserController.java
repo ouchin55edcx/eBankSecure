@@ -23,15 +23,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Public registration endpoint
-
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UserDTO userDto) {
         userService.registerNewUser(userDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
     }
 
-    // Admin endpoints
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<User>> getAllUsers() {
@@ -65,8 +62,7 @@ public class UserController {
     }
 
 
-    @PutMapping("/{username}")
-    @PreAuthorize("#username == authentication.name")
+    @PutMapping("/{username}/password")
     public ResponseEntity<String> changePassword(
             @PathVariable String username,
             @RequestParam String oldPassword,
@@ -74,6 +70,5 @@ public class UserController {
     ) {
         userService.changePassword(username, oldPassword, newPassword);
         return ResponseEntity.ok("Password changed successfully for user " + username);
-
     }
 }
