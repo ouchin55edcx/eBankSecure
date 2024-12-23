@@ -1,5 +1,8 @@
 # eBanking Secure Application
 ![low-quality-3fnumbzp9j-674cbe68232b8129616142.webp](src/main/java/com/ebanking/eBankSecure/low-quality-3fnumbzp9j-674cbe68232b8129616142.webp)
+
+
+
 A secure REST API for banking operations built with Spring Boot and Spring Security, implementing Basic Authentication for user access control.
 
 ## 📋 Overview
