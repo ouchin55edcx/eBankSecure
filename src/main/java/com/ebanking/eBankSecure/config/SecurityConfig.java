@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
-@Profile("!test") // Exclude this configuration when the 'test' profile is active
+@Profile("!test")
 public class SecurityConfig {
 
     @Bean
@@ -38,7 +38,7 @@ public class SecurityConfig {
                         .authenticated()
                         .anyRequest().authenticated()
                 )
-                .httpBasic(basic -> {}) // Enable Basic Authentication
+                .httpBasic(basic -> {})
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 );
